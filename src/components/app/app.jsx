@@ -1,6 +1,6 @@
 import React from "react";
 import {number} from 'prop-types';
-import WelcomeScreen from '../welcome-screen';
+import WelcomeScreen from '../screens/welcome-screen';
 
 const App = (props) => {
   const {gameTime, errorCount} = props;
