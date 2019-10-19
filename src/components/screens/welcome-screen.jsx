@@ -1,14 +1,14 @@
 import React from "react";
-import {number} from 'prop-types';
+import PropTypes from 'prop-types';
 
 const WelcomeScreen = (props) => {
-  const {time, errorCount} = props;
+  const {time, errorCount, onClick} = props;
 
   return <section className="welcome">
     <div className="welcome__logo">
       <img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"/>
     </div>
-    <button className="welcome__button"><span className="visually-hidden">Начать игру</span></button>
+    <button className="welcome__button" onClick={onClick}><span className="visually-hidden">Начать игру</span></button>
     <h2 className="welcome__rules-title">Правила игры</h2>
     <p className="welcome__text">Правила просты:</p>
     <ul className="welcome__rules-list">
@@ -19,6 +19,6 @@ const WelcomeScreen = (props) => {
   </section>;
 };
 
-WelcomeScreen.propTypes = {errorCount: number, time: number};
+WelcomeScreen.propTypes = {errorCount: PropTypes.number, time: PropTypes.number, onClick: PropTypes.onClick};
 
 export default WelcomeScreen;
