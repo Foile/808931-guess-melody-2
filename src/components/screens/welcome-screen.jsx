@@ -21,4 +21,5 @@ const WelcomeScreen = (props) => {
 
 WelcomeScreen.propTypes = {mistakes: PropTypes.number, minutes: PropTypes.number, onClick: PropTypes.func};
 
+
 export default WelcomeScreen;

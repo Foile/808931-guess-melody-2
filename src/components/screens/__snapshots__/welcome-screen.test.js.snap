@@ -16,7 +16,6 @@ exports[`App correctly renders after relaunch 1`] = `
   </div>
   <button
     className="welcome__button"
-    onClick={[MockFunction]}
   >
     <span
       className="visually-hidden"
