@@ -19,6 +19,6 @@ const WelcomeScreen = (props) => {
   </section>;
 };
 
-WelcomeScreen.propTypes = {errorCount: number, time: number};
+WelcomeScreen.propTypes = {errorCount: number.isRequired, time: number.isRequired};
 
 export default WelcomeScreen;
