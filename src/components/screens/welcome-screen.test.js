@@ -5,8 +5,8 @@ import WelcomeScreen from './welcome-screen';
 it(`App correctly renders after relaunch`, () => {
   const tree = renderer
   .create(<WelcomeScreen
-    errorCount={0}
-    time={0}
+    mistakes={0}
+    minutes={0}
     onClick={jest.fn()}
   />)
   .toJSON();

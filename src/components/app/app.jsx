@@ -7,8 +7,8 @@ const App = (props) => {
 
   const onClick = () => {};
   return <WelcomeScreen
-    time={gameTime}
-    errorCount={errorCount}
+    minutes={gameTime}
+    mistakes={errorCount}
     onClick={onClick}
   />;
 };
