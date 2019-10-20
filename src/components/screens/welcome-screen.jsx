@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 const WelcomeScreen = (props) => {
   const {mistakes, minutes, onClick} = props;
-
   return <section className="welcome">
     <div className="welcome__logo">
       <img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"/>
@@ -20,6 +19,5 @@ const WelcomeScreen = (props) => {
 };
 
 WelcomeScreen.propTypes = {mistakes: PropTypes.number, minutes: PropTypes.number, onClick: PropTypes.func};
-
 
 export default WelcomeScreen;
