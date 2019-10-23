@@ -48,11 +48,7 @@ class App extends React.PureComponent {
   }
 
   render() {
-    const {
-      gameTime,
-      errorCount,
-      questions,
-    } = this.props;
+    const {questions} = this.props;
     const {question} = this.state;
 
     return App.getScreen(question, this.props, () => {

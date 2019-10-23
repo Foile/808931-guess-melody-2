@@ -1,0 +1,200 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App correctly renders after relaunch 1`] = `
+<section
+  className="game game--genre"
+>
+  <header
+    className="game__header"
+  >
+    <a
+      className="game__back"
+    >
+      <span
+        className="visually-hidden"
+      >
+        Сыграть ещё раз
+      </span>
+      <img
+        alt="Угадай мелодию"
+        className="game__logo"
+        src="img/melody-logo-ginger.png"
+      />
+    </a>
+    <div
+      className="timer__value"
+    >
+      <span
+        className="timer__mins"
+      >
+        05
+      </span>
+      <span
+        className="timer__dots"
+      >
+        :
+      </span>
+      <span
+        className="timer__secs"
+      >
+        00
+      </span>
+    </div>
+    <div
+      className="game__mistakes"
+    >
+      <div
+        className="wrong"
+      />
+      <div
+        className="wrong"
+      />
+      <div
+        className="wrong"
+      />
+    </div>
+  </header>
+  <section
+    className="game__screen"
+  >
+    <h2
+      className="game__title"
+    >
+      Выберите 
+      reggae
+       треки
+    </h2>
+    <form
+      className="game__tracks"
+      onSubmit={[Function]}
+    >
+      <div
+        className="track"
+      >
+        <button
+          className="track__button track__button--play"
+          type="button"
+        />
+        <div
+          className="track__status"
+        >
+          <audio />
+        </div>
+        <div
+          className="game__answer"
+        >
+          <input
+            className="game__input visually-hidden"
+            id="answer-0"
+            name="answer"
+            type="checkbox"
+            value="answer-0"
+          />
+          <label
+            className="game__check"
+            htmlFor="answer-0"
+          >
+            Отметить
+          </label>
+        </div>
+      </div>
+      <div
+        className="track"
+      >
+        <button
+          className="track__button track__button--play"
+          type="button"
+        />
+        <div
+          className="track__status"
+        >
+          <audio />
+        </div>
+        <div
+          className="game__answer"
+        >
+          <input
+            className="game__input visually-hidden"
+            id="answer-1"
+            name="answer"
+            type="checkbox"
+            value="answer-1"
+          />
+          <label
+            className="game__check"
+            htmlFor="answer-1"
+          >
+            Отметить
+          </label>
+        </div>
+      </div>
+      <div
+        className="track"
+      >
+        <button
+          className="track__button track__button--play"
+          type="button"
+        />
+        <div
+          className="track__status"
+        >
+          <audio />
+        </div>
+        <div
+          className="game__answer"
+        >
+          <input
+            className="game__input visually-hidden"
+            id="answer-2"
+            name="answer"
+            type="checkbox"
+            value="answer-2"
+          />
+          <label
+            className="game__check"
+            htmlFor="answer-2"
+          >
+            Отметить
+          </label>
+        </div>
+      </div>
+      <div
+        className="track"
+      >
+        <button
+          className="track__button track__button--play"
+          type="button"
+        />
+        <div
+          className="track__status"
+        >
+          <audio />
+        </div>
+        <div
+          className="game__answer"
+        >
+          <input
+            className="game__input visually-hidden"
+            id="answer-3"
+            name="answer"
+            type="checkbox"
+            value="answer-3"
+          />
+          <label
+            className="game__check"
+            htmlFor="answer-3"
+          >
+            Отметить
+          </label>
+        </div>
+      </div>
+      <button
+        className="game__submit button"
+        type="submit"
+      >
+        Ответить
+      </button>
+    </form>
+  </section>
+</section>
+`;

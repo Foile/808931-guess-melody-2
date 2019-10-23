@@ -55,6 +55,17 @@ const GenreQuestionScreen = ({question, screenIndex, onAnswer}) => {
   );
 };
 
-GenreQuestionScreen.propTypes = {question: PropTypes.object, screenIndex: PropTypes.number, onAnswer: PropTypes.func};
+GenreQuestionScreen.propTypes = {
+  type: PropTypes.string,
+  question: PropTypes.shape({
+    genre: PropTypes.string,
+    answers: PropTypes.arrayOf(PropTypes.shape({
+      src: PropTypes.string,
+      genre: PropTypes.string
+    }))
+  }),
+  screenIndex: PropTypes.number,
+  onAnswer: PropTypes.func
+};
 
 export default GenreQuestionScreen;
