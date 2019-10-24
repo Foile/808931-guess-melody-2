@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from "react-test-renderer";
 import WelcomeScreen from './welcome-screen';
 
-it(`App correctly renders after relaunch`, () => {
+it(`WelcomeScreen correctly renders after relaunch`, () => {
   const tree = renderer
   .create(<WelcomeScreen
     mistakes={0}

@@ -25,7 +25,7 @@ const questionMock = {
   ]
 };
 
-it(`App correctly renders after relaunch`, () => {
+it(`GenreQuestionScreen correctly renders after relaunch`, () => {
   const tree = renderer
   .create(<GenreQuestionScreen
     question={questionMock}

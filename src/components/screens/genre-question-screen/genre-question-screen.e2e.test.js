@@ -28,15 +28,16 @@ const questionMock = {
 
 Enzyme.configure({adapter: new Adapter()});
 
-it(`startButton correct run afrer click`, () => {
-  const onClick = jest.fn();
+it(`GenreQuestionScreen callback with params`, () => {
+  const onAnswer = jest.fn();
   const screen = shallow(
       <GenreQuestionScreen
         question={questionMock}
         screenIndex={0}
-        onAnswer={onClick}
+        onAnswer={onAnswer}
       />);
   const answerButton = screen.find(`.game__tracks`);
   answerButton.simulate(`submit`);
-  expect(onClick).toHaveBeenCalledTimes(1);
+  expect(onAnswer).toHaveBeenCalledWith(undefined);
+
 });

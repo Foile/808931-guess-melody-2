@@ -38,7 +38,9 @@ const ArtistQuestionScreen = ({question, screenIndex, onAnswer}) => {
           </div>
         </div>
 
-        <form className="game__artist" onChange={onAnswer}>
+        <form className="game__artist" onChange={(evt) => {
+          onAnswer(evt);
+        }}>
           {answers.map((it, i) => {
             return (
               <div key={`${screenIndex}-answer-${i}`} className="artist">
@@ -56,6 +58,17 @@ const ArtistQuestionScreen = ({question, screenIndex, onAnswer}) => {
   );
 };
 
-ArtistQuestionScreen.propTypes = {question: PropTypes.object, screenIndex: PropTypes.number, onAnswer: PropTypes.func};
+ArtistQuestionScreen.propTypes = {
+  type: PropTypes.string,
+  question: PropTypes.shape({
+    artist: PropTypes.string,
+    answers: PropTypes.arrayOf(PropTypes.shape({
+      src: PropTypes.string,
+      artist: PropTypes.string
+    }))
+  }),
+  screenIndex: PropTypes.number,
+  onAnswer: PropTypes.func
+};
 
 export default ArtistQuestionScreen;
