@@ -31,7 +31,8 @@ const GenreQuestionScreen = ({question, screenIndex, onAnswer}) => {
       <section className="game__screen">
         <h2 className="game__title">Выберите {genre} треки</h2>
         <form className="game__tracks" onSubmit={(evt) => {
-          onAnswer(evt);
+          evt.preventDefault();
+          onAnswer(evt.target.value);
         }}>
           {answers.map((it, i) => {
             return (

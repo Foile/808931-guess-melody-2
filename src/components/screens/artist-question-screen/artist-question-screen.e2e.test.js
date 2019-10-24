@@ -37,6 +37,13 @@ it(`ArtistQuestionAcreen callback with params`, () => {
         onAnswer={onAnswer}
       />);
   const answerForm = screen.find(`.game__artist`);
-  answerForm.simulate(`change`);
-  expect(onAnswer).toHaveBeenCalledWith(undefined);
+  answerForm.simulate(`change`, {
+    preventDefault: () => {
+    },
+    target: {
+      value: `Quincas Moreira`,
+    },
+  });
+  expect(onAnswer).toHaveBeenCalledTimes(1);
+  expect(onAnswer).toHaveBeenCalledWith(`Quincas Moreira`);
 });

@@ -55,13 +55,20 @@ class App extends React.PureComponent {
       this.setState((prevState) => {
         const nextIndex = prevState.question + 1;
         const isEnd = nextIndex >= questions.length;
-
         return {question: !isEnd ? nextIndex : -1};
       });
     });
   }
 }
 
-App.propTypes = {errorCount: PropTypes.number, gameTime: PropTypes.number, questions: PropTypes.array};
+App.propTypes = {
+  errorCount: PropTypes.number.isRequired,
+  gameTime: PropTypes.number.isRequired,
+  questions: PropTypes.arrayOf(PropTypes.shape({
+    type: PropTypes.string.isRequired,
+    question: PropTypes.object
+  }).isRequired
+  )
+};
 
 export default App;

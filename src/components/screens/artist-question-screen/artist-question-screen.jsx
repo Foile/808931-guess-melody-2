@@ -39,7 +39,8 @@ const ArtistQuestionScreen = ({question, screenIndex, onAnswer}) => {
         </div>
 
         <form className="game__artist" onChange={(evt) => {
-          onAnswer(evt);
+          evt.preventDefault();
+          onAnswer(evt.target.value);
         }}>
           {answers.map((it, i) => {
             return (
