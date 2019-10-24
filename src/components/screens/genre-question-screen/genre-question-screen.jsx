@@ -62,7 +62,7 @@ GenreQuestionScreen.propTypes = {
       src: PropTypes.string,
       genre: PropTypes.string
     }))
-  }),
+  }).isRequired,
   screenIndex: PropTypes.number,
   onAnswer: PropTypes.func
 };
