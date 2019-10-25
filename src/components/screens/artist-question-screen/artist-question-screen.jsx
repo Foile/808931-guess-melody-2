@@ -67,7 +67,7 @@ ArtistQuestionScreen.propTypes = {
       src: PropTypes.string,
       artist: PropTypes.string
     }))
-  }),
+  }).isRequired,
   screenIndex: PropTypes.number,
   onAnswer: PropTypes.func
 };
