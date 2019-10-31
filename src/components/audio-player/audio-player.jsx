@@ -33,7 +33,7 @@ export default class AudioPlayer extends React.PureComponent {
   }
 
   componentDidMount() {
-    const {id, src} = this.props;
+    const {src} = this.props;
     const audio = this._audioRef.current;
 
     audio.src = src;
