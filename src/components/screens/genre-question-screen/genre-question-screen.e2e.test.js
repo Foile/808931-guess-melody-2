@@ -32,6 +32,6 @@ it(`GenreQuestionScreen callback with params`, () => {
       value: `answer-0`
     }
   });
-  expect(onAnswer).toHaveBeenCalledWith(`answer-0`);
+  expect(onAnswer).toHaveBeenCalledWith([]);
 
 });
