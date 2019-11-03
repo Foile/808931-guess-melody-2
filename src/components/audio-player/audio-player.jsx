@@ -35,7 +35,9 @@ export default class AudioPlayer extends React.PureComponent {
   componentDidMount() {
     const {src} = this.props;
     const audio = this._audioRef.current;
-
+    if (audio === null) {
+      return;
+    }
     audio.src = src;
 
     audio.oncanplaythrough = () =>{

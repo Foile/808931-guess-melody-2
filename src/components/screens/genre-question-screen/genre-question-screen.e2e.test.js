@@ -10,6 +10,18 @@ const questionMock = {
     {
       "src": `https://es31-server.appspot.com/guess-melody/static/music/Addis_Ababa.mp3`,
       "genre": `reggae`
+    },
+    {
+      "src": `https://es31-server.appspot.com/guess-melody/static/music/Azure.mp3`,
+      "genre": `electronic`
+    },
+    {
+      "src": `https://es31-server.appspot.com/guess-melody/static/music/Whaling_City.mp3`,
+      "genre": `country`
+    },
+    {
+      "src": `https://es31-server.appspot.com/guess-melody/static/music/Skanada.mp3`,
+      "genre": `reggae`
     }
   ]
 };

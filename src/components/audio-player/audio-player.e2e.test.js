@@ -19,9 +19,7 @@ it(`AudioPlayer is correctly handle click on play button`, () => {
     isLoading: false,
   });
 
-  HTMLMediaElement.prototype.pause = () => {}; // TODO: в консоль ошибка падает, что Not implemented: HTMLMediaElement.prototype.pause как её избежать?
-
-  expect(audioPlayer.state().isPlaying).toBe(false); // чтоб кнопка не была disabled и можно было кликать;
+  expect(audioPlayer.state().isPlaying).toBe(false);
   playButton.simulate(`click`);
 
   expect(playButtonClickHandler).toHaveBeenCalledTimes(1);
