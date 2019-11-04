@@ -7,10 +7,6 @@ const questionMock = {
   "type": `genre`,
   "genre": `reggae`,
   "answers": [
-    {
-      "src": `https://es31-server.appspot.com/guess-melody/static/music/Addis_Ababa.mp3`,
-      "genre": `reggae`
-    }
   ]
 };
 
@@ -27,11 +23,8 @@ it(`GenreQuestionScreen callback with params`, () => {
   const answerButton = screen.find(`.game__tracks`);
   answerButton.simulate(`submit`, {
     preventDefault: () => {
-    },
-    target: {
-      value: `answer-0`
     }
   });
-  expect(onAnswer).toHaveBeenCalledWith(`answer-0`);
+  expect(onAnswer).toHaveBeenCalledWith([]);
 
 });
