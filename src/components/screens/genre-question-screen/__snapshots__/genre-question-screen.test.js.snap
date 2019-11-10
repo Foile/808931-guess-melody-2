@@ -46,12 +46,6 @@ exports[`GenreQuestionScreen correctly renders after relaunch 1`] = `
       <div
         className="wrong"
       />
-      <div
-        className="wrong"
-      />
-      <div
-        className="wrong"
-      />
     </div>
   </header>
   <section

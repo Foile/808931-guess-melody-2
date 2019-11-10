@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import AudioPlayer from '../../audio-player/audio-player.jsx';
+import GameMistakes from "../../game-mistakes/game-mistakes.jsx";
 
 export default class GenreQuestionScreen extends React.PureComponent {
   constructor(props) {
@@ -32,11 +33,7 @@ export default class GenreQuestionScreen extends React.PureComponent {
             <span className="timer__secs">00</span>
           </div>
 
-          <div className="game__mistakes">
-            <div className="wrong"></div>
-            <div className="wrong"></div>
-            <div className="wrong"></div>
-          </div>
+          <GameMistakes mistakes={this.state.mistakes}></GameMistakes>
         </header>
 
         <section className="game__screen">
