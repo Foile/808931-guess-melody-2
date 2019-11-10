@@ -13,7 +13,9 @@ it(`AudioPlayer is correctly handle click on play button`, () => {
     onPlayButtonClick = {playButtonClickHandler}
     src = {``}
   />);
-
+  window.HTMLMediaElement.prototype.load = () => { /* do nothing */ };
+  window.HTMLMediaElement.prototype.play = () => { /* do nothing */ };
+  window.HTMLMediaElement.prototype.pause = () => { /* do nothing */ };
   const playButton = audioPlayer.find(`.track__button`);
   audioPlayer.setState({
     isLoading: false,
