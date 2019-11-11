@@ -2,150 +2,102 @@
 
 exports[`ArtistQuestionAcreen correctly renders after relaunch 1`] = `
 <section
-  className="game game--artist"
+  className="game__screen"
 >
-  <header
-    className="game__header"
+  <h2
+    className="game__title"
   >
-    <a
-      className="game__back"
-    >
-      <span
-        className="visually-hidden"
-      >
-        Сыграть ещё раз
-      </span>
-      <img
-        alt="Угадай мелодию"
-        className="game__logo"
-        src="img/melody-logo-ginger.png"
-      />
-    </a>
-    <div
-      className="timer__value"
-    >
-      <span
-        className="timer__mins"
-      >
-        05
-      </span>
-      <span
-        className="timer__dots"
-      >
-        :
-      </span>
-      <span
-        className="timer__secs"
-      >
-        00
-      </span>
-    </div>
-    <div
-      className="game__mistakes"
-    >
-      <div
-        className="wrong"
-      />
-    </div>
-  </header>
-  <section
-    className="game__screen"
+    Кто исполняет эту песню?
+  </h2>
+  <div
+    className="game__track"
   >
-    <h2
-      className="game__title"
-    >
-      Кто исполняет эту песню?
-    </h2>
     <div
-      className="game__track"
+      className="track"
     >
+      <button
+        className="track__button track__button--play"
+        disabled={true}
+        onClick={[Function]}
+        type="button"
+      />
       <div
-        className="track"
+        className="track__status"
       >
-        <button
-          className="track__button track__button--play"
-          disabled={true}
-          onClick={[Function]}
-          type="button"
-        />
-        <div
-          className="track__status"
-        >
-          <audio />
-        </div>
+        <audio />
       </div>
     </div>
-    <form
-      className="game__artist"
-      onChange={[Function]}
+  </div>
+  <form
+    className="game__artist"
+    onChange={[Function]}
+  >
+    <div
+      className="artist"
     >
-      <div
-        className="artist"
+      <input
+        className="artist__input visually-hidden"
+        id="answer-0"
+        name="answer"
+        type="radio"
+        value="Quincas Moreira"
+      />
+      <label
+        className="artist__name"
+        htmlFor="answer-0"
       >
-        <input
-          className="artist__input visually-hidden"
-          id="answer-0"
-          name="answer"
-          type="radio"
-          value="answer-0"
+        <img
+          alt="Quincas Moreira"
+          className="artist__picture"
+          src="https://es31-server.appspot.com/guess-melody/static/artist/Quincas_Moreira.jpg"
         />
-        <label
-          className="artist__name"
-          htmlFor="answer-0"
-        >
-          <img
-            alt="Quincas Moreira"
-            className="artist__picture"
-            src="https://es31-server.appspot.com/guess-melody/static/artist/Quincas_Moreira.jpg"
-          />
-          Quincas Moreira
-        </label>
-      </div>
-      <div
-        className="artist"
+        Quincas Moreira
+      </label>
+    </div>
+    <div
+      className="artist"
+    >
+      <input
+        className="artist__input visually-hidden"
+        id="answer-1"
+        name="answer"
+        type="radio"
+        value="Density & Time"
+      />
+      <label
+        className="artist__name"
+        htmlFor="answer-1"
       >
-        <input
-          className="artist__input visually-hidden"
-          id="answer-1"
-          name="answer"
-          type="radio"
-          value="answer-1"
+        <img
+          alt="Density & Time"
+          className="artist__picture"
+          src="https://es31-server.appspot.com/guess-melody/static/artist/Density_n_Time.jpg"
         />
-        <label
-          className="artist__name"
-          htmlFor="answer-1"
-        >
-          <img
-            alt="Density & Time"
-            className="artist__picture"
-            src="https://es31-server.appspot.com/guess-melody/static/artist/Density_n_Time.jpg"
-          />
-          Density & Time
-        </label>
-      </div>
-      <div
-        className="artist"
+        Density & Time
+      </label>
+    </div>
+    <div
+      className="artist"
+    >
+      <input
+        className="artist__input visually-hidden"
+        id="answer-2"
+        name="answer"
+        type="radio"
+        value="Endless Love"
+      />
+      <label
+        className="artist__name"
+        htmlFor="answer-2"
       >
-        <input
-          className="artist__input visually-hidden"
-          id="answer-2"
-          name="answer"
-          type="radio"
-          value="answer-2"
+        <img
+          alt="Endless Love"
+          className="artist__picture"
+          src="https://es31-server.appspot.com/guess-melody/static/artist/Endless_Love.jpg"
         />
-        <label
-          className="artist__name"
-          htmlFor="answer-2"
-        >
-          <img
-            alt="Endless Love"
-            className="artist__picture"
-            src="https://es31-server.appspot.com/guess-melody/static/artist/Endless_Love.jpg"
-          />
-          Endless Love
-        </label>
-      </div>
-    </form>
-  </section>
+        Endless Love
+      </label>
+    </div>
+  </form>
 </section>
 `;

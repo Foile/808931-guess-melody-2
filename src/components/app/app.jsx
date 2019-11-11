@@ -9,8 +9,9 @@ import GameMistakes from "../game-mistakes/game-mistakes";
 
 
 class App extends React.PureComponent {
-  _getScreen(question, props) {
-    if (question === -1) {
+  _getScreen(step, props) {
+    const {questions} = props;
+    if (!questions[step]) {
       const {
         gameTime,
         maxMistakes,
@@ -24,37 +25,63 @@ class App extends React.PureComponent {
       />;
     }
 
-    const {questions} = props;
-    const currentQuestion = questions[question];
     const {
       onUserAnswer,
       mistakes,
-      maxMistakes,
-      step
+      maxMistakes
     } = this.props;
 
-    switch (currentQuestion.type) {
-      case `genre`: return <GenreQuestionScreen
-        step={step}
-        question={question}
-        onAnswer={(userAnswer) => onUserAnswer(
-            userAnswer,
-            question,
-            mistakes,
-            maxMistakes
-        )}
-      />;
+    const currentQuestion = questions[step];
 
-      case `artist`: return <ArtistQuestionScreen
-        step={step}
-        question={question}
-        onAnswer={(userAnswer) => onUserAnswer(
-            userAnswer,
-            question,
-            mistakes,
-            maxMistakes
-        )}
-      />;
+    switch (currentQuestion.type) {
+      case `genre`: return <React.Fragment>
+        <header className="game__header">
+          <a className="game__back" href="#">
+            <span className="visually-hidden">Сыграть ещё раз</span>
+            <img className="game__logo" src="img/melody-logo-ginger.png" alt="Угадай мелодию" />
+          </a>
+
+          <div className="timer__value">
+            <span className="timer__mins">05</span>
+            <span className="timer__dots">:</span>
+            <span className="timer__secs">00</span>
+          </div>
+          <GameMistakes mistakes={this.state.mistakes}></GameMistakes>
+        </header><GenreQuestionScreen
+          step={step}
+          question={currentQuestion}
+          onAnswer={(userAnswer) => onUserAnswer(
+              userAnswer,
+              currentQuestion,
+              mistakes,
+              maxMistakes
+          )}
+        /></React.Fragment>;
+
+      case `artist`: return <React.Fragment>
+        <header className="game__header">
+          <a className="game__back" href="#">
+            <span className="visually-hidden">Сыграть ещё раз</span>
+            <img className="game__logo" src="img/melody-logo-ginger.png" alt="Угадай мелодию" />
+          </a>
+
+          <div className="timer__value">
+            <span className="timer__mins">05</span>
+            <span className="timer__dots">:</span>
+            <span className="timer__secs">00</span>
+          </div>
+          <GameMistakes mistakes={this.state.mistakes}></GameMistakes>
+        </header>
+        <ArtistQuestionScreen
+          step={step}
+          question={currentQuestion}
+          onAnswer={(userAnswer) => onUserAnswer(
+              userAnswer,
+              currentQuestion,
+              mistakes,
+              maxMistakes
+          )}
+        /></React.Fragment>;
     }
 
     return null;
@@ -64,32 +91,24 @@ class App extends React.PureComponent {
     super(props);
 
     this.state = {
-      question: -1,
+      step: -1,
     };
   }
 
   render() {
     const {
-      questions,
       step,
+      questions,
+      resetGame
     } = this.props;
 
-    return <section className={`game ${`artist`}`}>
-      <header className="game__header">
-        <a className="game__back" href="#">
-          <span className="visually-hidden">Сыграть ещё раз</span>
-          <img className="game__logo" src="img/melody-logo-ginger.png" alt="Угадай мелодию" />
-        </a>
+    if (step >= questions.length) {
+      resetGame();
+      return null;
+    }
 
-        <div className="timer__value">
-          <span className="timer__mins">05</span>
-          <span className="timer__dots">:</span>
-          <span className="timer__secs">00</span>
-        </div>
-        <GameMistakes mistakes={this.state.mistakes}></GameMistakes>
-      </header>
-
-      {this._getScreen(questions[step])}
+    return <section className={questions[step] ? `game game--${questions[step].type}` : `welcome`}>
+      {this._getScreen(step, this.props)}
     </section>;
   }
 }
@@ -106,6 +125,8 @@ App.propTypes = {
   step: PropTypes.number.isRequired,
   onUserAnswer: PropTypes.func.isRequired,
   onWelcomeScreenClick: PropTypes.func.isRequired,
+  timerTick: PropTypes.func.isRequired,
+  resetGame: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
@@ -121,7 +142,9 @@ const mapDispatchToProps = (dispatch) => ({
         question,
         mistakes,
         maxMistakes));
-  }
+  },
+  resetGame: () => dispatch(ActionCreator.reset()),
+  timerTick: () => dispatch(ActionCreator.timerTick()),
 });
 
 

@@ -8,14 +8,13 @@ const WelcomeScreen = (props) => {
     onClick,
   } = props;
 
-  return <section className="welcome">
+  return <React.Fragment>
     <div className="welcome__logo">
       <img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"/>
     </div>
     <button
       className="welcome__button"
-      onClick={onClick}
-    >
+      onClick={onClick}>
       <span className="visually-hidden">Начать игру</span>
     </button>
     <h2 className="welcome__rules-title">Правила игры</h2>
@@ -25,7 +24,7 @@ const WelcomeScreen = (props) => {
       <li>Можно допустить {mistakes} ошибки.</li>
     </ul>
     <p className="welcome__text">Удачи!</p>
-  </section>;
+  </React.Fragment>;
 };
 
 

@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`WelcomeScreen correctly renders after relaunch 1`] = `
-<section
-  className="welcome"
->
+Array [
   <div
     className="welcome__logo"
   >
@@ -13,7 +11,7 @@ exports[`WelcomeScreen correctly renders after relaunch 1`] = `
       src="img/melody-logo.png"
       width="186"
     />
-  </div>
+  </div>,
   <button
     className="welcome__button"
     onClick={[MockFunction]}
@@ -23,17 +21,17 @@ exports[`WelcomeScreen correctly renders after relaunch 1`] = `
     >
       Начать игру
     </span>
-  </button>
+  </button>,
   <h2
     className="welcome__rules-title"
   >
     Правила игры
-  </h2>
+  </h2>,
   <p
     className="welcome__text"
   >
     Правила просты:
-  </p>
+  </p>,
   <ul
     className="welcome__rules-list"
   >
@@ -47,11 +45,11 @@ exports[`WelcomeScreen correctly renders after relaunch 1`] = `
       0
        ошибки.
     </li>
-  </ul>
+  </ul>,
   <p
     className="welcome__text"
   >
     Удачи!
-  </p>
-</section>
+  </p>,
+]
 `;

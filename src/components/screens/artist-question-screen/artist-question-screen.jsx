@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import AudioPlayer from '../../audio-player/audio-player.jsx';
-import GameMistakes from "../../game-mistakes/game-mistakes.jsx";
 
 export default class ArtistQuestionScreen extends React.PureComponent {
   constructor(props) {
@@ -17,22 +16,7 @@ export default class ArtistQuestionScreen extends React.PureComponent {
     const {isPlaying} = this.state;
     const {answers, song} = question;
     return (
-      <section className="game game--artist">
-        <header className="game__header">
-          <a className="game__back">
-            <span className="visually-hidden">Сыграть ещё раз</span>
-            <img className="game__logo" src="img/melody-logo-ginger.png" alt="Угадай мелодию" />
-          </a>
-
-          <div className="timer__value">
-            <span className="timer__mins">05</span>
-            <span className="timer__dots">:</span>
-            <span className="timer__secs">00</span>
-          </div>
-
-          <GameMistakes mistakes={this.state.mistakes}></GameMistakes>
-        </header>
-
+      <React.Fragment>
         <section className="game__screen">
           <h2 className="game__title">Кто исполняет эту песню?</h2>
           <div className="game__track">
@@ -47,12 +31,12 @@ export default class ArtistQuestionScreen extends React.PureComponent {
 
           <form className="game__artist" onChange={(evt) => {
             evt.preventDefault();
-            onAnswer(evt.target.value);
+            onAnswer({artist: evt.target.value});
           }}>
             {answers.map((it, i) => {
               return (
                 <div key={`${screenIndex}-answer-${i}`} className="artist">
-                  <input className="artist__input visually-hidden" type="radio" name="answer" value={`answer-${i}`} id={`answer-${i}`} />
+                  <input className="artist__input visually-hidden" type="radio" name="answer" value={`${it.artist}`} id={`answer-${i}`} />
                   <label className="artist__name" htmlFor={`answer-${i}`}>
                     <img className="artist__picture" src={it.picture} alt={it.artist} />
                     {it.artist}
@@ -62,7 +46,7 @@ export default class ArtistQuestionScreen extends React.PureComponent {
             })}
           </form>
         </section>
-      </section>
+      </React.Fragment>
     );
   }
 }
