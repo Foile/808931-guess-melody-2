@@ -5,10 +5,52 @@ import GenreQuestionScreen from '../screens/genre-question-screen/genre-question
 import ArtistQuestionScreen from '../screens/artist-question-screen/artist-question-screen';
 import {connect} from 'react-redux';
 import {ActionCreator} from "../../reducer";
-import GameMistakes from "../game-mistakes/game-mistakes";
-
+import GameHeader from "../screens/game-header/game-header";
 
 class App extends React.PureComponent {
+
+  _getGameScreen(question, step) {
+    const {
+      onUserAnswer,
+      mistakes,
+      maxMistakes,
+      gameTime,
+      timerTick,
+      resetGame
+    } = this.props;
+
+    switch (question.type) {
+      case `genre`: return <React.Fragment>
+        <GameHeader time={gameTime} tick={timerTick} onTimeout={resetGame} mistakes={this.state.mistakes}></GameHeader>
+        <GenreQuestionScreen
+          step={step}
+          question={question}
+          onAnswer={(userAnswer) => onUserAnswer(
+              userAnswer,
+              question,
+              mistakes,
+              maxMistakes
+          )}
+        /></React.Fragment>;
+
+      case `artist`: return <React.Fragment>
+        <GameHeader time={gameTime} tick={timerTick} onTimeout={resetGame} mistakes={this.state.mistakes}></GameHeader>
+        <ArtistQuestionScreen
+          step={step}
+          question={question}
+          onAnswer={(userAnswer) => onUserAnswer(
+              userAnswer,
+              question,
+              mistakes,
+              maxMistakes
+          )}
+        /></React.Fragment>;
+
+    }
+
+    return null;
+  }
+
   _getScreen(step, props) {
     const {questions} = props;
     if (!questions[step]) {
@@ -24,67 +66,8 @@ class App extends React.PureComponent {
         onClick={onWelcomeScreenClick}
       />;
     }
-
-    const {
-      onUserAnswer,
-      mistakes,
-      maxMistakes
-    } = this.props;
-
     const currentQuestion = questions[step];
-
-    switch (currentQuestion.type) {
-      case `genre`: return <React.Fragment>
-        <header className="game__header">
-          <a className="game__back" href="#">
-            <span className="visually-hidden">Сыграть ещё раз</span>
-            <img className="game__logo" src="img/melody-logo-ginger.png" alt="Угадай мелодию" />
-          </a>
-
-          <div className="timer__value">
-            <span className="timer__mins">05</span>
-            <span className="timer__dots">:</span>
-            <span className="timer__secs">00</span>
-          </div>
-          <GameMistakes mistakes={this.state.mistakes}></GameMistakes>
-        </header><GenreQuestionScreen
-          step={step}
-          question={currentQuestion}
-          onAnswer={(userAnswer) => onUserAnswer(
-              userAnswer,
-              currentQuestion,
-              mistakes,
-              maxMistakes
-          )}
-        /></React.Fragment>;
-
-      case `artist`: return <React.Fragment>
-        <header className="game__header">
-          <a className="game__back" href="#">
-            <span className="visually-hidden">Сыграть ещё раз</span>
-            <img className="game__logo" src="img/melody-logo-ginger.png" alt="Угадай мелодию" />
-          </a>
-
-          <div className="timer__value">
-            <span className="timer__mins">05</span>
-            <span className="timer__dots">:</span>
-            <span className="timer__secs">00</span>
-          </div>
-          <GameMistakes mistakes={this.state.mistakes}></GameMistakes>
-        </header>
-        <ArtistQuestionScreen
-          step={step}
-          question={currentQuestion}
-          onAnswer={(userAnswer) => onUserAnswer(
-              userAnswer,
-              currentQuestion,
-              mistakes,
-              maxMistakes
-          )}
-        /></React.Fragment>;
-    }
-
-    return null;
+    return this._getGameScreen(currentQuestion, props);
   }
 
   constructor(props) {
@@ -92,6 +75,7 @@ class App extends React.PureComponent {
 
     this.state = {
       step: -1,
+      mistakes: 0
     };
   }
 
@@ -127,6 +111,7 @@ App.propTypes = {
   onWelcomeScreenClick: PropTypes.func.isRequired,
   timerTick: PropTypes.func.isRequired,
   resetGame: PropTypes.func.isRequired,
+  time: PropTypes.number
 };
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
