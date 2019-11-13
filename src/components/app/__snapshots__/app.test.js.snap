@@ -16,7 +16,7 @@ exports[`App correctly renders after relaunch 1`] = `
   </div>
   <button
     className="welcome__button"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     <span
       className="visually-hidden"
@@ -39,12 +39,12 @@ exports[`App correctly renders after relaunch 1`] = `
   >
     <li>
       За 
-      0
+      100
        минут нужно ответить на все вопросы.
     </li>
     <li>
       Можно допустить 
-      0
+      Infinity
        ошибки.
     </li>
   </ul>

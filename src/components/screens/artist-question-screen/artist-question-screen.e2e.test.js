@@ -45,5 +45,5 @@ it(`ArtistQuestionAcreen callback with params`, () => {
     },
   });
   expect(onAnswer).toHaveBeenCalledTimes(1);
-  expect(onAnswer).toHaveBeenCalledWith(`Quincas Moreira`);
+  expect(onAnswer).toHaveBeenCalledWith({"artist": `Quincas Moreira`});
 });

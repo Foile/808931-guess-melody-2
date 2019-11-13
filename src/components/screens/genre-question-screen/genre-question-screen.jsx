@@ -11,7 +11,7 @@ export default class GenreQuestionScreen extends React.PureComponent {
     };
     this._answerHandler = props.onAnswer;
 
-    this._ipnutChangeHandler = this._ipnutChangeHandler.bind(this);
+    this._inputChangeHandler = this._inputChangeHandler.bind(this);
     this._formSubmitHandler = this._formSubmitHandler.bind(this);
   }
 
@@ -19,26 +19,7 @@ export default class GenreQuestionScreen extends React.PureComponent {
     const {answers, genre} = this.props.question;
     const {screenIndex} = this.props;
     return (
-      <section className="game game--genre">
-        <header className="game__header">
-          <a className="game__back">
-            <span className="visually-hidden">Сыграть ещё раз</span>
-            <img className="game__logo" src="img/melody-logo-ginger.png" alt="Угадай мелодию" />
-          </a>
-
-          <div className="timer__value">
-            <span className="timer__mins">05</span>
-            <span className="timer__dots">:</span>
-            <span className="timer__secs">00</span>
-          </div>
-
-          <div className="game__mistakes">
-            <div className="wrong"></div>
-            <div className="wrong"></div>
-            <div className="wrong"></div>
-          </div>
-        </header>
-
+      <React.Fragment>
         <section className="game__screen">
           <h2 className="game__title">Выберите {genre} треки</h2>
           <form className="game__tracks" onSubmit = {this._formSubmitHandler}>
@@ -53,7 +34,7 @@ export default class GenreQuestionScreen extends React.PureComponent {
                     })}
                   />
                   <div className="game__answer">
-                    <input className="game__input visually-hidden" type="checkbox" name="answer" value={`answer-${i}`} id={`answer-${i}`} />
+                    <input className="game__input visually-hidden" type="checkbox" name="answer" value={`${answer.genre}`} id={`answer-${i}`} onChange={this._inputChangeHandler}/>
                     <label className="game__check" htmlFor={`answer-${i}`}>Отметить</label>
                   </div>
                 </div>
@@ -62,14 +43,14 @@ export default class GenreQuestionScreen extends React.PureComponent {
             <button className="game__submit button" type="submit">Ответить</button>
           </form>
         </section>
-      </section>
+      </React.Fragment>
     );
   }
 
-  _ipnutChangeHandler(evt) {
+  _inputChangeHandler(evt) {
     const answers = [...this.state.answers];
     if (evt.target.checked) {
-      answers.push(evt.target.value);
+      answers.push({genre: evt.target.value});
     } else {
       const index = answers.indexOf(evt.target.value);
       answers.splice(index, 1);
