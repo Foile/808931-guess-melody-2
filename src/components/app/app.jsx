@@ -16,8 +16,10 @@ class App extends React.PureComponent {
       maxMistakes,
       timerTick,
       resetGame,
-      time
+      gameTime,
+      timeLeft
     } = this.props;
+    const time = gameTime * 60 - timeLeft;
 
     switch (question.type) {
       case `genre`: return <React.Fragment>
@@ -76,7 +78,7 @@ class App extends React.PureComponent {
     this.state = {
       step: -1,
       mistakes: 0,
-      time: props.gameTime + 60
+      timeLeft: 0
     };
   }
 
@@ -112,16 +114,20 @@ App.propTypes = {
   onWelcomeScreenClick: PropTypes.func.isRequired,
   timerTick: PropTypes.func.isRequired,
   resetGame: PropTypes.func.isRequired,
-  time: PropTypes.number
+  timeLeft: PropTypes.number
 };
 
-const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
-  step: state.step,
-  mistakes: state.mistakes,
-  time: state.time
-});
+const mapStateToProps = (state, ownProps) => {
+  const res = Object.assign({}, ownProps, {
+    step: state.step,
+    mistakes: state.mistakes,
+    timeLeft: state.timeLeft
+  });
 
-const mapDispatchToProps = (dispatch) => ({
+  return res;
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
   onWelcomeScreenClick: () => dispatch(ActionCreator.incrementStep()),
   onUserAnswer: (userAnswer, question, mistakes, maxMistakes) => {
     dispatch(ActionCreator.incrementStep());
@@ -130,7 +136,7 @@ const mapDispatchToProps = (dispatch) => ({
         mistakes,
         maxMistakes));
   },
-  resetGame: () => dispatch(ActionCreator.reset()),
+  resetGame: () => dispatch(ActionCreator.reset(ownProps.gameTime)),
   timerTick: () => dispatch(ActionCreator.timerTick()),
 });
 

@@ -1,9 +1,7 @@
-import settings from './mocks/settings';
-
 const initialState = {
   step: -1,
   mistakes: 0,
-  time: settings.gameTime * 60
+  timeLeft: 0
 };
 const isArtistAnswerCorrect = (answer, question) => answer.artist === question.song.artist;
 
@@ -33,12 +31,12 @@ const reducer = (state = initialState, action) => {
     case `INCREMENT_MISTAKES`: return Object.assign({}, state, {mistakes: state.mistakes + action.payload});
     case `INCREMENT_STEP`: return Object.assign({}, state, {step: state.step + action.payload});
     case `RESET`: return Object.assign({}, initialState);
-    case `TICK_TIMER`: {
+    case `TICK_TIMER`:
       return Object.assign({}, state, {
-        time: state.time - 1,
+        timeLeft: state.timeLeft + 1,
       });
-    }
   }
+
   return state;
 };
 
