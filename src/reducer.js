@@ -1,7 +1,9 @@
+import settings from './mocks/settings';
+
 const initialState = {
   step: -1,
   mistakes: 0,
-  time: 300
+  time: settings.gameTime * 60
 };
 const isArtistAnswerCorrect = (answer, question) => answer.artist === question.song.artist;
 

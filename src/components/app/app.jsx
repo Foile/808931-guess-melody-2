@@ -76,7 +76,7 @@ class App extends React.PureComponent {
     this.state = {
       step: -1,
       mistakes: 0,
-      time: props.gameTime * 60
+      time: props.gameTime + 60
     };
   }
 
