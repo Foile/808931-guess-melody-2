@@ -15,12 +15,13 @@ class App extends React.PureComponent {
       mistakes,
       maxMistakes,
       timerTick,
-      resetGame
+      resetGame,
+      time
     } = this.props;
 
     switch (question.type) {
       case `genre`: return <React.Fragment>
-        <GameHeader time={this.state.time} tick={timerTick} onTimeout={resetGame} mistakes={this.state.mistakes}></GameHeader>
+        <GameHeader time={time} tick={timerTick} onTimeout={resetGame} mistakes={mistakes}></GameHeader>
         <GenreQuestionScreen
           step={step}
           question={question}
@@ -33,7 +34,7 @@ class App extends React.PureComponent {
         /></React.Fragment>;
 
       case `artist`: return <React.Fragment>
-        <GameHeader time={this.state.time} tick={timerTick} onTimeout={resetGame} mistakes={this.state.mistakes}></GameHeader>
+        <GameHeader time={time} tick={timerTick} onTimeout={resetGame} mistakes={mistakes}></GameHeader>
         <ArtistQuestionScreen
           step={step}
           question={question}
@@ -116,7 +117,8 @@ App.propTypes = {
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
   step: state.step,
-  mistakes: state.mistakes
+  mistakes: state.mistakes,
+  time: state.time
 });
 
 const mapDispatchToProps = (dispatch) => ({

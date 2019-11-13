@@ -31,10 +31,11 @@ const reducer = (state = initialState, action) => {
     case `INCREMENT_MISTAKES`: return Object.assign({}, state, {mistakes: state.mistakes + action.payload});
     case `INCREMENT_STEP`: return Object.assign({}, state, {step: state.step + action.payload});
     case `RESET`: return Object.assign({}, initialState);
-    case `TICK_TIMER`:
+    case `TICK_TIMER`: {
       return Object.assign({}, state, {
-        timer: state.time - 1,
+        time: state.time - 1,
       });
+    }
   }
   return state;
 };
