@@ -1,6 +1,7 @@
 const initialState = {
   step: -1,
-  mistakes: 0
+  mistakes: 0,
+  time: 300
 };
 const isArtistAnswerCorrect = (answer, question) => answer.artist === question.song.artist;
 
@@ -32,7 +33,7 @@ const reducer = (state = initialState, action) => {
     case `RESET`: return Object.assign({}, initialState);
     case `TICK_TIMER`:
       return Object.assign({}, state, {
-        timer: state.timer - 1,
+        timer: state.time - 1,
       });
   }
   return state;

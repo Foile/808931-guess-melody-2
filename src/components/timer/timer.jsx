@@ -30,6 +30,7 @@ export default class Timer extends Component {
     }
     this.props.tick();
   }
+
   componentDidMount() {
     this.id = setInterval(this._tick.bind(this), 1000);
   }

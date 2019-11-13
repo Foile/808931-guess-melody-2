@@ -14,14 +14,13 @@ class App extends React.PureComponent {
       onUserAnswer,
       mistakes,
       maxMistakes,
-      gameTime,
       timerTick,
       resetGame
     } = this.props;
 
     switch (question.type) {
       case `genre`: return <React.Fragment>
-        <GameHeader time={gameTime} tick={timerTick} onTimeout={resetGame} mistakes={this.state.mistakes}></GameHeader>
+        <GameHeader time={this.state.time} tick={timerTick} onTimeout={resetGame} mistakes={this.state.mistakes}></GameHeader>
         <GenreQuestionScreen
           step={step}
           question={question}
@@ -34,7 +33,7 @@ class App extends React.PureComponent {
         /></React.Fragment>;
 
       case `artist`: return <React.Fragment>
-        <GameHeader time={gameTime} tick={timerTick} onTimeout={resetGame} mistakes={this.state.mistakes}></GameHeader>
+        <GameHeader time={this.state.time} tick={timerTick} onTimeout={resetGame} mistakes={this.state.mistakes}></GameHeader>
         <ArtistQuestionScreen
           step={step}
           question={question}
@@ -75,7 +74,8 @@ class App extends React.PureComponent {
 
     this.state = {
       step: -1,
-      mistakes: 0
+      mistakes: 0,
+      time: props.gameTime * 60
     };
   }
 

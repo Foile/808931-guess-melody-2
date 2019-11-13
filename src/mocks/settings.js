@@ -1,5 +1,5 @@
 const settings = {
   gameTime: 5,
-  errorCount: 3,
+  errorCount: 1,
 };
 export default settings;
